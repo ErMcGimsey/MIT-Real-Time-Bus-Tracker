@@ -27,4 +27,4 @@ A program to track a single bus on its MIT-Harvard route in real time. A marker 
 
 ## License 
 
-review the MIT License [here](https://github.com/ErMcGimsey/MIT-Real-Time-Bus-Tracker/blob/main/LICENSE)
+Review the MIT License [here](https://github.com/ErMcGimsey/MIT-Real-Time-Bus-Tracker/blob/main/LICENSE)
