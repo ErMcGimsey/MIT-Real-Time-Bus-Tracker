@@ -46,7 +46,9 @@
 //	 removeMarker = markerList.slice(0,1)
 //	 removeMarker[0].remove();
  // }
-
+ var marker = new mapboxgl.Marker({
+ 		 color: '#e75480',
+	})
 		  
 	async function run(){
 	
@@ -55,17 +57,16 @@
 		console.log(new Date());
 		console.log(locations);
 		//console.log(locations[0].attributes.longitude);//this gives me the error 'cannot read properties of undefined(reading 'longitude')'
-		var lng = locations[1].attributes.longitude 
-		var lat = locations[1].attributes.latitude 
+	var lng = locations[0].attributes.longitude 
+	var lat = locations[0].attributes.latitude 
+
 		
 		// timer
 		setTimeout(run, 15000);
 		
 
-		var marker = new mapboxgl.Marker({
- 		 color: '#e75480',
-	})
-		.setLngLat([lng,lat])
+	
+		marker.setLngLat([lng,lat])
       	.addTo(map)
 		//.remove();
 
