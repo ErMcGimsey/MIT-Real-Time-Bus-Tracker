@@ -33,26 +33,50 @@
 		zoom: 12
 	});
 	
-	var marker = new mapboxgl.Marker({
- 		 color: '#e75480',
-	})
-		.setLngLat([-71.091542,42.358862])
-      	.addTo(map);
+//	var marker = new mapboxgl.Marker({
+ //		 color: '#e75480',
+//	})
+//		.setLngLat([-71.091542,42.358862])
+  //    	.addTo(map);
 
+//  var markerList = []
+ // var removeMarker = []
 
+ // if (markerList.length !== 0){
+//	 removeMarker = markerList.slice(0,1)
+//	 removeMarker[0].remove();
+ // }
 
 		  
 	async function run(){
+	
    		// get bus data    
 		const locations = await getBusLocations();
 		console.log(new Date());
 		console.log(locations);
-		console.log(locations[0].atributes.longitude);//this gives me the error 'cannot read properties of undefined(reading 'longitude')'
-
+		//console.log(locations[0].attributes.longitude);//this gives me the error 'cannot read properties of undefined(reading 'longitude')'
+		var lng = locations[1].attributes.longitude 
+		var lat = locations[1].attributes.latitude 
+		
 		// timer
 		setTimeout(run, 15000);
-	}
+		
 
+		var marker = new mapboxgl.Marker({
+ 		 color: '#e75480',
+	})
+		.setLngLat([lng,lat])
+      	.addTo(map)
+		//.remove();
+
+		//markerList.push(marker)
+		
+		
+	}
+	async function remove(){
+		let marker1 = await fetch(marker)
+		marker1.remove();
+	}
 	// Request bus data from MBTA
 	async function getBusLocations(){
 		const url = 'https://api-v3.mbta.com/vehicles?filter[route]=1&include=trip';
@@ -62,5 +86,6 @@
 	}
 
 	run();
-//console.log(locations[0].atributes.longitude)
+
+//console.log(locations[0].attributes.longitude)
 </script>
